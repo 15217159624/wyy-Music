@@ -1,5 +1,9 @@
-export default {
-  // serverUrl: 'https://music.befirer.com'
-  // serverUrl: 'http://localhost:3001'
-serverUrl: 'http://10.172.29.219:3001' //手机扫码体验请把地址改为局域网ip
-};
+if(process.env.NODE_ENV === 'development'){
+    // 开发环境
+    BASR_URL = 'http://172.16.11.62:9211'
+}else{
+    // 生产环境
+    BASR_URL = 'http://172.16.11.62:9211'
+}
+
+export default BASR_URL

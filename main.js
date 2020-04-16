@@ -1,12 +1,15 @@
 import Vue from 'vue'
 import App from './App'
-// import utils from './utils/index'
-import config from './config/index'
-Vue.prototype.$config = config
+
+// 接口
+import api from './api/index.js'
+Vue.prototype.$api = api
+
+// 请求
+import request from './api/request.js'
+Vue.prototype.$http = request
+
 Vue.config.productionTip = false
-
-// Vue.use(utils)
-
 
 App.mpType = 'app'
 
