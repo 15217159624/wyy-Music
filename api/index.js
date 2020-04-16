@@ -1,5 +1,7 @@
+import request from './request.js'
+
 export default {
-	index:{
-		banner:'/banner'
+	bannerApi: function(data) {
+		return request("POST", "/banner", data);
 	}
 }

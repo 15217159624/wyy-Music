@@ -1,4 +1,4 @@
-import BASR_URL from './config.js'
+import BASR_URL from '../config/index.js'
 
 const request = (method, url, data) => {
 

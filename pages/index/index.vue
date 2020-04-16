@@ -15,7 +15,7 @@
 			}
 		},
 		onLoad() {
-
+			this.$http.bannerApi()
 		},
 		methods: {
 
