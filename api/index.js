@@ -1,7 +1,11 @@
-import request from './request.js'
+// import request from './request.js'
 
-export default {
-	bannerApi: function(data) {
-		return request("POST", "/banner", data);
-	}
-}
+// //首页轮播图
+
+// export function getBanner(data) {
+// 	return request({
+// 			url: '/banner',
+// 			method: 'post',
+// 			data
+// 	})  
+// }

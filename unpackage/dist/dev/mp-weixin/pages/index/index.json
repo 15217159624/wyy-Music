@@ -1,4 +1,6 @@
 {
-  "navigationBarTitleText": "网易云音乐",
-  "usingComponents": {}
+  "navigationBarTitleText": "音乐推荐",
+  "usingComponents": {
+    "song-sheet": "/components/SongSheet"
+  }
 }

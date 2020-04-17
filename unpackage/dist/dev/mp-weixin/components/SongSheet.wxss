@@ -24,28 +24,47 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-image.data-v-5b372d1a {
-  width: 100%;
-  height: 200px;
-}
-swiper.data-v-5b372d1a {
-  height: 200px;
-}
-.cell-title.data-v-5b372d1a {
-  font-size: 32rpx;
-  margin-top: 20rpx;
-  margin-bottom: 10rpx;
-  padding: 0 15px;
-}
-.cell-SongSheet.data-v-5b372d1a {
+.SongSheet.item.data-v-0d7f9cd0 {
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
-  -webkit-flex-wrap: wrap;
-          flex-wrap: wrap;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-          justify-content: space-between;
-  padding: 0 8px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  overflow: hidden;
+  width: 100%;
+  margin-top: 7Px;
+}
+.SongSheet.item image.data-v-0d7f9cd0 {
+    width: 100%;
+    height: 31vw;
+    border-radius: 10rpx;
+}
+.SongSheet.item .playCount.data-v-0d7f9cd0 {
+    position: absolute;
+    right: 5%;
+    top: 2%;
+    font-size: 10Px;
+    color: #fff;
+    z-index: 1;
+}
+.SongSheet.item .shadow.data-v-0d7f9cd0 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 31vw;
+    border-radius: 10rpx;
+    box-shadow: 0rpx 0rpx 100rpx #000 inset;
+}
+.SongSheet.item .name.data-v-0d7f9cd0 {
+    font-size: 24rpx;
+    margin-bottom: 15Px;
+    margin-top: 5Px;
 }
 

@@ -1,6 +1,8 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/index/index",
+    "pages/Hot/index",
+    "pages/Search/index"
   ],
   "subPackages": [],
   "window": {
@@ -9,5 +11,27 @@
     "navigationBarBackgroundColor": "#e20000",
     "backgroundColor": "#F8F8F8"
   },
-  "usingComponents": {}
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#e20000",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "position": "top",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "推荐"
+      },
+      {
+        "pagePath": "pages/Hot/index",
+        "text": "热歌榜"
+      },
+      {
+        "pagePath": "pages/Search/index",
+        "text": "搜索"
+      }
+    ]
+  },
+  "usingComponents": {},
+  "sitemapLocation": "sitemap24.json"
 }

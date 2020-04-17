@@ -7614,9 +7614,9 @@ module.exports = g;
 
 /***/ }),
 /* 4 */
-/*!********************************************************************!*\
-  !*** C:/Users/mcmc/Documents/HBuilderProjects/wyyMusic/pages.json ***!
-  \********************************************************************/
+/*!**************************************************************!*\
+  !*** C:/Users/mcmc/Desktop/小程序/小程序demo/wyy-Music/pages.json ***!
+  \**************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -8520,20 +8520,20 @@ module.exports = {"_from":"@dcloudio/uni-stat@next","_id":"@dcloudio/uni-stat@2.
 
 /***/ }),
 /* 7 */
-/*!*************************************************************************************!*\
-  !*** C:/Users/mcmc/Documents/HBuilderProjects/wyyMusic/pages.json?{"type":"style"} ***!
-  \*************************************************************************************/
+/*!*******************************************************************************!*\
+  !*** C:/Users/mcmc/Desktop/小程序/小程序demo/wyy-Music/pages.json?{"type":"style"} ***!
+  \*******************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": { "navigationBarTitleText": "网易云音乐", "usingComponents": {}, "usingAutoImportComponents": {} } }, "globalStyle": { "navigationBarTextStyle": "white", "navigationBarTitleText": "网易云音乐", "navigationBarBackgroundColor": "#e20000", "backgroundColor": "#F8F8F8" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": { "navigationBarTitleText": "音乐推荐" }, "pages/Hot/index": { "navigationBarTitleText": "音乐热歌榜" }, "pages/Search/index": { "navigationBarTitleText": "歌曲搜索" } }, "globalStyle": { "navigationBarTextStyle": "white", "navigationBarTitleText": "网易云音乐", "navigationBarBackgroundColor": "#e20000", "backgroundColor": "#F8F8F8" } };exports.default = _default;
 
 /***/ }),
 /* 8 */
-/*!************************************************************************************!*\
-  !*** C:/Users/mcmc/Documents/HBuilderProjects/wyyMusic/pages.json?{"type":"stat"} ***!
-  \************************************************************************************/
+/*!******************************************************************************!*\
+  !*** C:/Users/mcmc/Desktop/小程序/小程序demo/wyy-Music/pages.json?{"type":"stat"} ***!
+  \******************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8675,18 +8675,1018 @@ function normalizeComponent (
 
 /***/ }),
 /* 15 */
-/*!*************************************************************************!*\
-  !*** C:/Users/mcmc/Documents/HBuilderProjects/wyyMusic/config/index.js ***!
-  \*************************************************************************/
+/*!****************************************************************!*\
+  !*** C:/Users/mcmc/Desktop/小程序/小程序demo/wyy-Music/utils/fly.js ***!
+  \****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
-  // serverUrl: 'https://music.befirer.com'
-  // serverUrl: 'http://localhost:3001'
-  serverUrl: 'http://10.172.29.219:3001' //手机扫码体验请把地址改为局域网ip
-};exports.default = _default;
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var Fly = __webpack_require__(/*! flyio/dist/npm/wx */ 16);
+
+var fly = new Fly();
+
+//配置请求基地址
+fly.config.baseURL = "";
+
+// //添加请求拦截器
+fly.interceptors.request.use(function (config, promise) {
+  console.info("request: " + config.url, config.body);
+  //请求头添加token
+  var token = wx.getStorageSync("carMiniToken");
+  config.headers["token"] = token;
+  //给所有请求添加自定义header
+  config.headers["X-Tag"] = "flyio";
+  //可以通过promise.reject／resolve直接中止请求
+  //promise.resolve("fake data")
+
+  return config;
+});
+
+//添加响应拦截器，响应拦截器会在then/catch处理之前执行
+fly.interceptors.response.use(
+function (response, promise) {
+  console.info("response: " + response.request.url, response.data);
+  if (response.data.code == 401) {
+    wx.clearStorage();
+    uni.hideLoading();
+    uni.navigateTo({
+      url: "/pages/login/index" });
+
+  } else {
+    //只将请求结果的data字段返回
+    return response.data;
+  }
+},
+function (err, promise) {
+  //发生网络错误后会走到这里
+  //promise.resolve("ssss")
+});var _default =
+
+fly;exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+/* 16 */
+/*!*******************************************!*\
+  !*** ./node_modules/flyio/dist/npm/wx.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(true)
+		module.exports = factory();
+	else { var i, a; }
+})(this, function() {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// identity function for calling harmony imports with the correct context
+/******/ 	__webpack_require__.i = function(value) { return value; };
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 11);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+module.exports = {
+    type: function type(ob) {
+        return Object.prototype.toString.call(ob).slice(8, -1).toLowerCase();
+    },
+    isObject: function isObject(ob, real) {
+        if (real) {
+            return this.type(ob) === "object";
+        } else {
+            return ob && (typeof ob === 'undefined' ? 'undefined' : _typeof(ob)) === 'object';
+        }
+    },
+    isFormData: function isFormData(val) {
+        return typeof FormData !== 'undefined' && val instanceof FormData;
+    },
+    trim: function trim(str) {
+        return str.replace(/(^\s*)|(\s*$)/g, '');
+    },
+    encode: function encode(val) {
+        return encodeURIComponent(val).replace(/%40/gi, '@').replace(/%3A/gi, ':').replace(/%24/g, '$').replace(/%2C/gi, ',').replace(/%20/g, '+').replace(/%5B/gi, '[').replace(/%5D/gi, ']');
+    },
+    formatParams: function formatParams(data) {
+        var str = "";
+        var first = true;
+        var that = this;
+        if ((typeof data === 'undefined' ? 'undefined' : _typeof(data)) != "object") {
+            return data;
+        }
+        function _encode(sub, path) {
+            var encode = that.encode;
+            var type = that.type(sub);
+            if (type == "array") {
+                sub.forEach(function (e, i) {
+                    _encode(e, path + "%5B%5D");
+                });
+            } else if (type == "object") {
+                for (var key in sub) {
+                    if (path) {
+                        _encode(sub[key], path + "%5B" + encode(key) + "%5D");
+                    } else {
+                        _encode(sub[key], encode(key));
+                    }
+                }
+            } else {
+                if (!first) {
+                    str += "&";
+                }
+                first = false;
+                str += path + "=" + encode(sub);
+            }
+        }
+
+        _encode(data, "");
+        return str;
+    },
+
+    // Do not overwrite existing attributes
+    merge: function merge(a, b) {
+        for (var key in b) {
+            if (!a.hasOwnProperty(key)) {
+                a[key] = b[key];
+            } else if (this.isObject(b[key], 1) && this.isObject(a[key], 1)) {
+                this.merge(a[key], b[key]);
+            }
+        }
+        return a;
+    }
+};
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+function KEEP(_,cb){cb();}
+"use strict";
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/*
+ * author: wendu
+ * email: 824783146@qq.com
+ **/
+
+var util = __webpack_require__(0);
+var isBrowser = typeof document !== "undefined";
+
+//EngineWrapper can help  generating  a  http engine quickly through a adapter
+function EngineWrapper(adapter) {
+    var AjaxEngine = function () {
+        function AjaxEngine() {
+            _classCallCheck(this, AjaxEngine);
+
+            this.requestHeaders = {};
+            this.readyState = 0;
+            this.timeout = 0; // 0 stands for no timeout
+            this.responseURL = "";
+            this.responseHeaders = {};
+        }
+
+        _createClass(AjaxEngine, [{
+            key: "_call",
+            value: function _call(name) {
+                this[name] && this[name].apply(this, [].splice.call(arguments, 1));
+            }
+        }, {
+            key: "_changeReadyState",
+            value: function _changeReadyState(state) {
+                this.readyState = state;
+                this._call("onreadystatechange");
+            }
+        }, {
+            key: "open",
+            value: function open(method, url) {
+                this.method = method;
+                if (!url) {
+                    url = location.href;
+                } else {
+                    url = util.trim(url);
+                    if (url.indexOf("http") !== 0) {
+                        // Normalize the request url
+                        if (isBrowser) {
+                            var t = document.createElement("a");
+                            t.href = url;
+                            url = t.href;
+                        }
+                    }
+                }
+                this.responseURL = url;
+                this._changeReadyState(1);
+            }
+        }, {
+            key: "send",
+            value: function send(arg) {
+                var _this = this;
+
+                arg = arg || null;
+                var self = this;
+                if (adapter) {
+                    var request = {
+                        method: self.method,
+                        url: self.responseURL,
+                        headers: self.requestHeaders || {},
+                        body: arg
+                    };
+                    util.merge(request, self._options || {});
+                    if (request.method === "GET") {
+                        request.body = null;
+                    }
+                    self._changeReadyState(3);
+                    var timer;
+                    self.timeout = self.timeout || 0;
+                    if (self.timeout > 0) {
+                        timer = setTimeout(function () {
+                            if (self.readyState === 3) {
+                                _this._call("onloadend");
+                                self._changeReadyState(0);
+                                self._call("ontimeout");
+                            }
+                        }, self.timeout);
+                    }
+                    request.timeout = self.timeout;
+                    adapter(request, function (response) {
+
+                        function getAndDelete(key) {
+                            var t = response[key];
+                            delete response[key];
+                            return t;
+                        }
+
+                        // If the request has already timeout, return
+                        if (self.readyState !== 3) return;
+                        clearTimeout(timer);
+
+                        // Make sure the type of status is integer
+                        self.status = getAndDelete("statusCode") - 0;
+
+                        var responseText = getAndDelete("responseText");
+                        var statusMessage = getAndDelete("statusMessage");
+
+                        // Network error, set the status code 0
+                        if (!self.status) {
+                            self.statusText = responseText;
+                            self._call("onerror", { msg: statusMessage });
+                        } else {
+                            // Parsing the response headers to array in a object,  because
+                            // there may be multiple values with the same header name
+                            var responseHeaders = getAndDelete("headers");
+                            var headers = {};
+                            for (var field in responseHeaders) {
+                                var value = responseHeaders[field];
+                                var key = field.toLowerCase();
+                                // Is array
+                                if ((typeof value === "undefined" ? "undefined" : _typeof(value)) === "object") {
+                                    headers[key] = value;
+                                } else {
+                                    headers[key] = headers[key] || [];
+                                    headers[key].push(value);
+                                }
+                            }
+                            var cookies = headers["set-cookie"];
+                            if (isBrowser && cookies) {
+                                cookies.forEach(function (e) {
+                                    // Remove the http-Only property of the  cookie
+                                    // so that JavaScript can operate it.
+                                    document.cookie = e.replace(/;\s*httpOnly/ig, "");
+                                });
+                            }
+                            self.responseHeaders = headers;
+                            // Set the fields of engine from response
+                            self.statusText = statusMessage || "";
+                            self.response = self.responseText = responseText;
+                            self._response = response;
+                            self._changeReadyState(4);
+                            self._call("onload");
+                        }
+                        self._call("onloadend");
+                    });
+                } else {
+                    console.error("Ajax require adapter");
+                }
+            }
+        }, {
+            key: "setRequestHeader",
+            value: function setRequestHeader(key, value) {
+                this.requestHeaders[util.trim(key)] = value;
+            }
+        }, {
+            key: "getResponseHeader",
+            value: function getResponseHeader(key) {
+                return (this.responseHeaders[key.toLowerCase()] || "").toString() || null;
+            }
+        }, {
+            key: "getAllResponseHeaders",
+            value: function getAllResponseHeaders() {
+                var str = "";
+                for (var key in this.responseHeaders) {
+                    str += key + ":" + this.getResponseHeader(key) + "\r\n";
+                }
+                return str || null;
+            }
+        }, {
+            key: "abort",
+            value: function abort(msg) {
+                this._changeReadyState(0);
+                this._call("onerror", { msg: msg });
+                this._call("onloadend");
+            }
+        }], [{
+            key: "setAdapter",
+            value: function setAdapter(requestAdapter) {
+                adapter = requestAdapter;
+            }
+        }]);
+
+        return AjaxEngine;
+    }();
+
+    return AjaxEngine;
+}
+
+// learn more about keep-loader: https://github.com/wendux/keep-loader
+;
+module.exports = EngineWrapper;
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+function KEEP(_,cb){cb();}
+"use strict";
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var utils = __webpack_require__(0);
+var isBrowser = typeof document !== "undefined";
+
+var Fly = function () {
+    function Fly(engine) {
+        _classCallCheck(this, Fly);
+
+        this.engine = engine || XMLHttpRequest;
+
+        this.default = this; //For typeScript
+
+        /**
+         * Add  lock/unlock API for interceptor.
+         *
+         * Once an request/response interceptor is locked, the incoming request/response
+         * will be added to a queue before they enter the interceptor, they will not be
+         * continued  until the interceptor is unlocked.
+         *
+         * @param [interceptor] either is interceptors.request or interceptors.response
+         */
+        function wrap(interceptor) {
+            var resolve;
+            var reject;
+
+            function _clear() {
+                interceptor.p = resolve = reject = null;
+            }
+
+            utils.merge(interceptor, {
+                lock: function lock() {
+                    if (!resolve) {
+                        interceptor.p = new Promise(function (_resolve, _reject) {
+                            resolve = _resolve;
+                            reject = _reject;
+                        });
+                    }
+                },
+                unlock: function unlock() {
+                    if (resolve) {
+                        resolve();
+                        _clear();
+                    }
+                },
+                clear: function clear() {
+                    if (reject) {
+                        reject("cancel");
+                        _clear();
+                    }
+                }
+            });
+        }
+
+        var interceptors = this.interceptors = {
+            response: {
+                use: function use(handler, onerror) {
+                    this.handler = handler;
+                    this.onerror = onerror;
+                }
+            },
+            request: {
+                use: function use(handler) {
+                    this.handler = handler;
+                }
+            }
+        };
+
+        var irq = interceptors.request;
+        var irp = interceptors.response;
+        wrap(irp);
+        wrap(irq);
+
+        this.config = {
+            method: "GET",
+            baseURL: "",
+            headers: {},
+            timeout: 0,
+            params: {}, // Default Url params
+            parseJson: true, // Convert response data to JSON object automatically.
+            withCredentials: false
+        };
+    }
+
+    _createClass(Fly, [{
+        key: "request",
+        value: function request(url, data, options) {
+            var _this = this;
+
+            var engine = new this.engine();
+            var contentType = "Content-Type";
+            var contentTypeLowerCase = contentType.toLowerCase();
+            var interceptors = this.interceptors;
+            var requestInterceptor = interceptors.request;
+            var responseInterceptor = interceptors.response;
+            var requestInterceptorHandler = requestInterceptor.handler;
+            var promise = new Promise(function (resolve, reject) {
+                if (utils.isObject(url)) {
+                    options = url;
+                    url = options.url;
+                }
+                options = options || {};
+                options.headers = options.headers || {};
+
+                function isPromise(p) {
+                    // some  polyfill implementation of Promise may be not standard,
+                    // so, we test by duck-typing
+                    return p && p.then && p.catch;
+                }
+
+                /**
+                 * If the request/response interceptor has been locked，
+                 * the new request/response will enter a queue. otherwise, it will be performed directly.
+                 * @param [promise] if the promise exist, means the interceptor is  locked.
+                 * @param [callback]
+                 */
+                function enqueueIfLocked(promise, callback) {
+                    if (promise) {
+                        promise.then(function () {
+                            callback();
+                        });
+                    } else {
+                        callback();
+                    }
+                }
+
+                // make the http request
+                function makeRequest(options) {
+                    data = options.body;
+                    // Normalize the request url
+                    url = utils.trim(options.url);
+                    var baseUrl = utils.trim(options.baseURL || "");
+                    if (!url && isBrowser && !baseUrl) url = location.href;
+                    if (url.indexOf("http") !== 0) {
+                        var isAbsolute = url[0] === "/";
+                        if (!baseUrl && isBrowser) {
+                            var arr = location.pathname.split("/");
+                            arr.pop();
+                            baseUrl = location.protocol + "//" + location.host + (isAbsolute ? "" : arr.join("/"));
+                        }
+                        if (baseUrl[baseUrl.length - 1] !== "/") {
+                            baseUrl += "/";
+                        }
+                        url = baseUrl + (isAbsolute ? url.substr(1) : url);
+                        if (isBrowser) {
+
+                            // Normalize the url which contains the ".." or ".", such as
+                            // "http://xx.com/aa/bb/../../xx" to "http://xx.com/xx" .
+                            var t = document.createElement("a");
+                            t.href = url;
+                            url = t.href;
+                        }
+                    }
+
+                    var responseType = utils.trim(options.responseType || "");
+                    var isGet = options.method === "GET";
+                    var dataType = utils.type(data);
+                    var params = options.params || {};
+
+                    // merge url params when the method is "GET" (data is object)
+                    if (isGet && dataType === "object") {
+                        params = utils.merge(data, params);
+                    }
+                    // encode params to String
+                    params = utils.formatParams(params);
+
+                    // save url params
+                    var _params = [];
+                    if (params) {
+                        _params.push(params);
+                    }
+                    // Add data to url params when the method is "GET" (data is String)
+                    if (isGet && data && dataType === "string") {
+                        _params.push(data);
+                    }
+
+                    // make the final url
+                    if (_params.length > 0) {
+                        url += (url.indexOf("?") === -1 ? "?" : "&") + _params.join("&");
+                    }
+
+                    engine.open(options.method, url);
+
+                    // try catch for ie >=9
+                    try {
+                        engine.withCredentials = !!options.withCredentials;
+                        engine.timeout = options.timeout || 0;
+                        if (responseType !== "stream") {
+                            engine.responseType = responseType;
+                        }
+                    } catch (e) {}
+
+                    var customContentType = options.headers[contentType] || options.headers[contentTypeLowerCase];
+
+                    // default content type
+                    var _contentType = "application/x-www-form-urlencoded";
+                    // If the request data is json object, transforming it  to json string,
+                    // and set request content-type to "json". In browser,  the data will
+                    // be sent as RequestBody instead of FormData
+                    if (utils.trim((customContentType || "").toLowerCase()) === _contentType) {
+                        data = utils.formatParams(data);
+                    } else if (!utils.isFormData(data) && ["object", "array"].indexOf(utils.type(data)) !== -1) {
+                        _contentType = 'application/json;charset=utf-8';
+                        data = JSON.stringify(data);
+                    }
+                    //If user doesn't set content-type, set default.
+                    if (!(customContentType || isGet)) {
+                        options.headers[contentType] = _contentType;
+                    }
+
+                    for (var k in options.headers) {
+                        if (k === contentType && utils.isFormData(data)) {
+                            // Delete the content-type, Let the browser set it
+                            delete options.headers[k];
+                        } else {
+                            try {
+                                // In browser environment, some header fields are readonly,
+                                // write will cause the exception .
+                                engine.setRequestHeader(k, options.headers[k]);
+                            } catch (e) {}
+                        }
+                    }
+
+                    function onresult(handler, data, type) {
+                        enqueueIfLocked(responseInterceptor.p, function () {
+                            if (handler) {
+                                //如果失败，添加请求信息
+                                if (type) {
+                                    data.request = options;
+                                }
+                                var ret = handler.call(responseInterceptor, data, Promise);
+                                data = ret === undefined ? data : ret;
+                            }
+                            if (!isPromise(data)) {
+                                data = Promise[type === 0 ? "resolve" : "reject"](data);
+                            }
+                            data.then(function (d) {
+                                resolve(d);
+                            }).catch(function (e) {
+                                reject(e);
+                            });
+                        });
+                    }
+
+                    function onerror(e) {
+                        e.engine = engine;
+                        onresult(responseInterceptor.onerror, e, -1);
+                    }
+
+                    function Err(msg, status) {
+                        this.message = msg;
+                        this.status = status;
+                    }
+
+                    engine.onload = function () {
+                        // The xhr of IE9 has not response field
+                        var response = engine.response || engine.responseText;
+                        if (response && options.parseJson && (engine.getResponseHeader(contentType) || "").indexOf("json") !== -1
+                        // Some third engine implementation may transform the response text to json object automatically,
+                        // so we should test the type of response before transforming it
+                        && !utils.isObject(response)) {
+                            response = JSON.parse(response);
+                        }
+
+                        var headers = engine.responseHeaders;
+                        // In browser
+                        if (!headers) {
+                            headers = {};
+                            var items = (engine.getAllResponseHeaders() || "").split("\r\n");
+                            items.pop();
+                            items.forEach(function (e) {
+                                if (!e) return;
+                                var key = e.split(":")[0];
+                                headers[key] = engine.getResponseHeader(key);
+                            });
+                        }
+                        var status = engine.status;
+                        var statusText = engine.statusText;
+                        var data = { data: response, headers: headers, status: status, statusText: statusText };
+                        // The _response filed of engine is set in  adapter which be called in engine-wrapper.js
+                        utils.merge(data, engine._response);
+                        if (status >= 200 && status < 300 || status === 304) {
+                            data.engine = engine;
+                            data.request = options;
+                            onresult(responseInterceptor.handler, data, 0);
+                        } else {
+                            var e = new Err(statusText, status);
+                            e.response = data;
+                            onerror(e);
+                        }
+                    };
+
+                    engine.onerror = function (e) {
+                        onerror(new Err(e.msg || "Network Error", 0));
+                    };
+
+                    engine.ontimeout = function () {
+                        onerror(new Err("timeout [ " + engine.timeout + "ms ]", 1));
+                    };
+                    engine._options = options;
+                    setTimeout(function () {
+                        engine.send(isGet ? null : data);
+                    }, 0);
+                }
+
+                enqueueIfLocked(requestInterceptor.p, function () {
+                    utils.merge(options, _this.config);
+                    var headers = options.headers;
+                    headers[contentType] = headers[contentType] || headers[contentTypeLowerCase] || "";
+                    delete headers[contentTypeLowerCase];
+                    options.body = data || options.body;
+                    url = utils.trim(url || "");
+                    options.method = options.method.toUpperCase();
+                    options.url = url;
+                    var ret = options;
+                    if (requestInterceptorHandler) {
+                        ret = requestInterceptorHandler.call(requestInterceptor, options, Promise) || options;
+                    }
+                    if (!isPromise(ret)) {
+                        ret = Promise.resolve(ret);
+                    }
+                    ret.then(function (d) {
+                        //if options continue
+                        if (d === options) {
+                            makeRequest(d);
+                        } else {
+                            resolve(d);
+                        }
+                    }, function (err) {
+                        reject(err);
+                    });
+                });
+            });
+            promise.engine = engine;
+            return promise;
+        }
+    }, {
+        key: "all",
+        value: function all(promises) {
+            return Promise.all(promises);
+        }
+    }, {
+        key: "spread",
+        value: function spread(callback) {
+            return function (arr) {
+                return callback.apply(null, arr);
+            };
+        }
+    }]);
+
+    return Fly;
+}();
+
+//For typeScript
+
+
+Fly.default = Fly;
+
+["get", "post", "put", "patch", "head", "delete"].forEach(function (e) {
+    Fly.prototype[e] = function (url, data, option) {
+        return this.request(url, data, utils.merge({ method: e }, option));
+    };
+});
+        ["lock", "unlock", "clear"].forEach(function (e) {
+            Fly.prototype[e] = function () {
+                this.interceptors.request[e]();
+            };
+        });
+// Learn more about keep-loader: https://github.com/wendux/keep-loader
+;
+module.exports = Fly;
+
+/***/ }),
+/* 3 */,
+/* 4 */,
+/* 5 */,
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+//微信小程序适配器
+module.exports = function (request, responseCallback) {
+    var con = {
+        method: request.method,
+        url: request.url,
+        dataType: request.dataType || undefined,
+        header: request.headers,
+        data: request.body || {},
+        success: function success(res) {
+            responseCallback({
+                statusCode: res.statusCode,
+                responseText: res.data,
+                headers: res.header,
+                statusMessage: res.errMsg
+            });
+        },
+        fail: function fail(res) {
+            responseCallback({
+                statusCode: res.statusCode || 0,
+                statusMessage: res.errMsg
+            });
+        }
+    };
+    wx.request(con);
+};
+
+/***/ }),
+/* 7 */,
+/* 8 */,
+/* 9 */,
+/* 10 */,
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+//微信小程序入口
+var Fly = __webpack_require__(2);
+var EngineWrapper = __webpack_require__(1);
+var adapter = __webpack_require__(6);
+var wxEngine = EngineWrapper(adapter);
+module.exports = function (engine) {
+    return new Fly(engine || wxEngine);
+};
+
+/***/ })
+/******/ ]);
+});
+
+/***/ }),
+/* 17 */
+/*!***********************************************************************!*\
+  !*** C:/Users/mcmc/Desktop/小程序/小程序demo/wyy-Music/utils/baseApiUrl.js ***!
+  \***********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.baseApiUrl = void 0;
+var IS_PRODUCT = false; // true为正式环境，false为测试环境
+
+// 测试环境下自动开启调试，避开ssl检查，正式环境下关闭调试
+if (!IS_PRODUCT) {
+  wx.setEnableDebug({
+    enableDebug: true });
+
+}
+
+var RES_URL = 'http://10.172.29.219:3001';
+// const RES_URL = 'http://172.16.11.62:9211'
+var baseApiUrl = IS_PRODUCT ? RES_URL : RES_URL;exports.baseApiUrl = baseApiUrl;
+
+/***/ }),
+/* 18 */,
+/* 19 */,
+/* 20 */,
+/* 21 */,
+/* 22 */,
+/* 23 */,
+/* 24 */,
+/* 25 */,
+/* 26 */,
+/* 27 */,
+/* 28 */,
+/* 29 */,
+/* 30 */,
+/* 31 */,
+/* 32 */,
+/* 33 */,
+/* 34 */,
+/* 35 */,
+/* 36 */,
+/* 37 */,
+/* 38 */,
+/* 39 */,
+/* 40 */,
+/* 41 */
+/*!**********************************************************************!*\
+  !*** C:/Users/mcmc/Desktop/小程序/小程序demo/wyy-Music/static/headset.png ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAB2UlEQVRYR+2W3VECQRCEuyMQIhAjECIQI1AykAwwAg0BIxAykAiUCCQDNQIxgrb63KXW8w7Qu/NemCqKB9jZb2d6fohfmKQhgAsAfQC98LGH1/BZAZiT9Pdexn3+JekKwA2ALoAHAE/hwvS4gS4BGPIdwC3J+S7/WwEkdQA8AjgBMCE52+XQv0uaGADAC4Bzkuuyc6UAkhxmX74Il5c6KXIe4KchZYYoTEshQHL5HUm/5M8myecdkWERxA+AQP7sl5P0wcomKUZikE9HEYBFBpIWVG0myX5FcpQ6/QYQyiwTHUmXVm0myVUSRekqyiwPYMpV1byXUYdU9NLobgBC7l2/tb8+AgVxW1/dqIUUwDmfknSoGjNJTq17ypfWEjqXi8PjrteYBTFu0pwCuFTWTeU/99BOLPEUwMq0St1u3xqqgmMAjnCf5GCTAkm+/CyJu9vuOOapaj4kWV/3ADxbos1IjhlapSdd3pYkPdkqW8EDo8+RATwkTlsCWBhAJU/8jwis2waAASy4o5ZS8GEAdyTveW2IcGkA16VLpA2A66wRlZSJF5JadoKSKGcizw8j74GufQ8Mb7W17ARhF/CscSNy2T+RzHaCvdbyyp1oi4MDwCEChwi0HoFP1q/rGoECyqsAAAAASUVORK5CYII="
+
+/***/ }),
+/* 42 */,
+/* 43 */,
+/* 44 */,
+/* 45 */,
+/* 46 */,
+/* 47 */,
+/* 48 */,
+/* 49 */,
+/* 50 */,
+/* 51 */,
+/* 52 */
+/*!*************************************************************************!*\
+  !*** C:/Users/mcmc/Desktop/小程序/小程序demo/wyy-Music/static/pause-item.png ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACzUlEQVRYR81XgVEbQQyUKsBUEKcCQgWYCqKrAKggTgVABdgVxFRwogLsCkIqSOgAKlBmf3Q/5//75/0OODfDDOO5P632VroV0w5LRL4Q0RkRzYhokv398WPWRPSgqk9Dj+UhG0XkhogumHk6ZL+ZAdCKiJaq+tL3TS8AEbkkoutC4I0HSZlPfQ8YOkoBzQzBb1R12QWiCEBEQO8dMwNAWgi6UFXty0hEhIiEmS8yIPjmqsRGC4AHf2RmZIP1y8zmqor7HbygF2ZeuGbIzKALgNjSRwtACAEbThDJzO5VNWdhMIC0Efph5ms/D2ef50xsARCRVaLOzL6rKjLYe0FLzPzDQaxV9TwdWgNobNo78ybqBhO3qorKohpACAGK/oQ7jzGm+29lj7st1blrZ6KqqTJa34YQoKMzr47PuIoKQCN73FFRcGlfSRspATPDwUUQIoJy/e1XUbFQAciEt4kxossVV0Zja18IwfzgzgQ82UpnYEFVj7mBCmWCDvaeAGbM/OhgTwFgzsx3/sNxX+v8Fww44+iQR2a2BIAFM38jol76nb5U06OvwAFUYkRMTsr8SAA5kzUAM6tr8z01kDMJIR4UABG9Hv4KDi7C/6EM8/b4EY0IZiXWjShvxWa29VT2vGij+0D25D/HGKe7PkZ7NSJ3ST9bj5GzUD3HsE6qelrqBSKCPq5mtlLVeb4nhADfNzOzaVc7z5rea9rXZUgQ4KqrIY35Pas2WL3abfVZMtjp2zHBCtqpLRkGlxgjnHO13jKlezORZ+4Oe9ZpSr1PT5gZr1VyxnCyoGxXWw5jg6EmGRzYe2m6pc7JKHfIrto1fL6Zbd7wDKD3a2OoeTCzy0GDSX5/7gHhXmFW64V+QUQwFWnIwMyIhta0c1A7hppOlzV0OIVrQtltAekR6DNKlYgwyo0fTgtqRqagGGMX/scMiYUgLz5+YXwcPJ7/BXaNhg1+ZbuWAAAAAElFTkSuQmCC"
+
+/***/ }),
+/* 53 */
+/*!************************************************************************!*\
+  !*** C:/Users/mcmc/Desktop/小程序/小程序demo/wyy-Music/static/play-list.png ***!
+  \************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACyklEQVRYR9VX0VFbQQyUKohTQUIFmAowFURXAaYCnApwKoipAFPBiQpCBzgV2HRAKtjMeu55zs/v3j3MMCT3AzPvOK12tZJQ+eCjHxxf/j8AZvZVVb90MQfgt7u/vIbVKgNmNhKRSxGZqup4yOMAXFUdwEMNUC8AM5uLyLWqEsQDHxaRR3ffdAEhOyJiqjoRkW8ANqo6jzHel4B3AkhZRz4EgH88LwUtPWxmEwYXkXMAS3e/6rp7ACAF/0W6AVy5+3II7T1A5qp6A4DMXbTvHQAIITwm1Bfuzt/ffMyM9XMH4NbdZ/mDewCyi2/OvI3azJaqeglgL7EdgET9k6o+xxhZRJ0nFdpd9pG2Y2ZVtkIIGwDrXIocAKs3thF2ZNLQGURkpKrTJNnM3W/79MoYPmmKOgdAisYxxl6vhxBoRYkxWhPMzGaq+hPAD3dn5RdPCOEFAF214KUdgBDCij4f8ABpXDQPZCAaZnrrJyUwamTOAaBGP4OFEIr3SoWW08Hmxv5yFAAzG6vqU4yx2EFpYwCnIkKdD+ZCqoPpsQA4iNYVACsWJ4BxAcC2Qx4F4BUSnLk7gRycPglYnbRSb+tNXu4qwsYJvUVoZovktm2vyYuQ2m3cnb4uHhaaiJy6+1nmAD56PWR2JLetmjh5H2CPvikVT9tuHLsAduN3SPC0zKwBBPp9j4GmwmvNJD2yk4msiQgl6dS8ZUE2O4sxcr/Ynj07sUkAOK+x0CdR6VspwfY0pM3YETkwdhofE7CVOTPmoPtM2XJ7di0kTUslzd9rO10NXLbgnACYtKUqrWQNCOrKguncAQcEp9W42mnJ4sWWamYcz2ThE3c6EeGkGwSEetNRLDgReQZgpSKtbcXUjg2GFiUQAqB9Srs/bclWy59/0tTsHc/V/wsy/zMbDiNmt7NRLkMCuAU5xJYHNqxp+h7fBzPwHsH/CQb+AsiNBz/sKFcbAAAAAElFTkSuQmCC"
+
+/***/ }),
+/* 54 */
+/*!********************************************************************!*\
+  !*** C:/Users/mcmc/Desktop/小程序/小程序demo/wyy-Music/utils/newDate.js ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.comHour = exports.lastWeeks = exports.comWeeks = exports.comyearMonth = exports.combeforeDay = exports.comLastDay = exports.comMonth = exports.comYear = void 0;
+var dates = new Date();
+var year = dates.getFullYear();
+var month = dates.getMonth() + 1 < 10 ? '0' + (dates.getMonth() + 1) : dates.getMonth() + 1;
+// 计算年月日
+function getDateStr(AddDayCount) {
+  var dd = new Date();
+  dd.setDate(dd.getDate() + AddDayCount); //获取AddDayCount天后的日期
+  var y = dd.getFullYear();
+  var m = dd.getMonth() + 1; //获取当前月份的日期
+  var d = dd.getDate();
+
+  return y + '-' + (m < 10 ? '0' + m : m) + '-' + (d < 10 ? '0' + d : d);
+
+}
+// 计算年月
+function getDateStrTwo(AddDayCount) {
+  var dd = new Date();
+  dd.setDate(dd.getDate() + AddDayCount); //获取AddDayCount天后的日期
+  var y = dd.getFullYear();
+  var m = dd.getMonth(); //获取当前月份的日期
+  return y.toString() + (m < 10 ? '0' + m : m);
+
+}
+// 计算到时分秒
+function getDateStrThree(AddDayCount) {
+  var dd = new Date();
+  dd.setDate(dd.getDate() + AddDayCount); //获取AddDayCount天后的日期
+  var y = dd.getFullYear();
+  var m = dd.getMonth() + 1; //获取当前月份的日期
+  var d = dd.getDate();
+  // var hour = dd.getHours();
+  // var minute = dd.getMinutes();
+  // var second = dd.getSeconds();
+  return y + '-' + (m < 10 ? '0' + m : m) + '-' + (d < 10 ? '0' + d : d) + ' ' + '00' + ':' + '00' + ':' + '00';
+
+}
+// 计算第几周
+
+function getYearWeek(a, b, c) {//a为年 b为月 c为日
+  var date1 = new Date(a, parseInt(b) - 1, c),
+  date2 = new Date(a, 0, 1),
+  d = Math.round((date1.valueOf() - date2.valueOf()) / 86400000);
+  return Math.ceil((d + (date2.getDay() + 1 - 1)) / 7);
+};
+
+// 计算年月日
+var comYear = getDateStr(0);
+// 计算年月日+1
+exports.comYear = comYear;var comLastDay = getDateStr(1);
+// 计算前一天
+exports.comLastDay = comLastDay;var combeforeDay = getDateStr(-1);
+// 计算年月日时分秒
+exports.combeforeDay = combeforeDay;var comHour = getDateStrThree(0);
+// 计算年月
+exports.comHour = comHour;var comMonth = year.toString() + month.toString();
+
+// 沙盘运用
+// 日期
+exports.comMonth = comMonth;var comyearMonth = getDateStrTwo(0);
+// 计算周期
+exports.comyearMonth = comyearMonth;var yearArrs = comYear.split('-');
+// 前七天的周期
+var lastWeeks = getDateStr(-7);
+// console.log('comWeeks',comYear)
+exports.lastWeeks = lastWeeks;var comyearWeek = getYearWeek(yearArrs[0], yearArrs[1], yearArrs[2]);
+var comWeeks = year.toString() + (comyearWeek - 1);exports.comWeeks = comWeeks;
+console.log(comyearWeek - 1);
 
 /***/ })
 ]]);

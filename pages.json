@@ -4,10 +4,43 @@
 			{
 				"path": "pages/index/index",
 				"style": {
-					"navigationBarTitleText": "网易云音乐"
+					"navigationBarTitleText": "音乐推荐"
+				}
+			},
+			{
+				"path": "pages/Hot/index",
+				"style": {
+					"navigationBarTitleText": "音乐热歌榜"
+				}
+			},
+			{
+				"path": "pages/Search/index",
+				"style": {
+					"navigationBarTitleText": "歌曲搜索"
 				}
 			}
     ],
+	"tabBar": {
+	    "color": "#7A7E83",
+	    "selectedColor": "#e20000",
+	    "borderStyle": "black",
+	    "backgroundColor": "#ffffff",
+		"position":"top",
+	    "list": [
+	        {
+	            "pagePath": "pages/index/index",
+	            "text": "推荐"
+	        },
+	        {
+	          "pagePath": "pages/Hot/index",
+	          "text": "热歌榜"
+	        },
+			{
+			  "pagePath": "pages/Search/index",
+			  "text": "搜索"
+			}
+	    ]
+	},
     "globalStyle": {
         "navigationBarTextStyle": "white",
         "navigationBarTitleText": "网易云音乐",

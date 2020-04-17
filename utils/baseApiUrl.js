@@ -8,8 +8,8 @@ if(!IS_PRODUCT) {
   });
 }
 
-// let baseApiUrl = IS_PRODUCT ? "https://iovs.gdmcmc.cn/iovs" : "http://tst.gdmcmc.cn/iovs";
-// let authApiUrl = IS_PRODUCT ? "https://iovs.gdmcmc.cn/iovs" : "http://tst.gdmcmc.cn/iovs";
+const RES_URL = 'http://10.172.29.219:3001'
+// const RES_URL = 'http://172.16.11.62:9211'
+let baseApiUrl = IS_PRODUCT ? RES_URL : RES_URL;
 
-
-export { baseApiUrl, authApiUrl  }
+export { baseApiUrl }

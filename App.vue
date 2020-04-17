@@ -14,4 +14,20 @@
 
 <style>
 	/*每个页面公共css */
+	View,
+	Text {
+	    font-size: 14px;
+	}
+	image {
+	    max-width: 100%;
+	}
+	song-sheet {
+	    display: inline-block;
+	    width: 32.5%;
+	}
+	.ellipsis {
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	    white-space: nowrap;
+	}
 </style>
