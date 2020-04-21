@@ -1,0 +1,15 @@
+van-icon {
+    position: relative;
+    top: 5px;
+}
+.PersonalizedList {
+    padding: 10px;
+    .cell-SongSheet {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .cell-title {
+        font-size: 32rpx;
+    }
+}

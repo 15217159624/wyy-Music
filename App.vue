@@ -30,4 +30,7 @@
 	    text-overflow: ellipsis;
 	    white-space: nowrap;
 	}
+	
+	/* iconFont */
+ /* @import "./common/iconfont.css" */
 </style>

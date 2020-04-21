@@ -2,7 +2,9 @@
   "pages": [
     "pages/index/index",
     "pages/Hot/index",
-    "pages/Search/index"
+    "pages/Search/index",
+    "pages/pageSong/index",
+    "pages/SongList/index"
   ],
   "subPackages": [],
   "window": {
@@ -33,5 +35,5 @@
     ]
   },
   "usingComponents": {},
-  "sitemapLocation": "sitemap24.json"
+  "sitemapLocation": "sitemap86.json"
 }

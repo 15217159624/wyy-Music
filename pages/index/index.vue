@@ -1,8 +1,9 @@
 <template>
 	<view class="content">
 		<view class="swiper-box">
+			 <!-- @change="swiperChange" -->
 		<Swiper
-		    @change="swiperChange"
+		   
 		    :current="current"
 		    indicatorColor="#fff"
 		    indicatorActiveColor="#31c27c"
@@ -74,13 +75,14 @@ export default {
 	  });
 	},
 	go(title) {
+		console.log('进来了')
 	    uni.navigateTo({
-	        url: `/pages/PersonalizedList/index?name=${title}`
+	        url: `/pages/pageSong/index?name=${title}`
 	    });
 	},
-	swiperChange (){
-		console.log('滚')
-	},
+	// swiperChange (){
+	// 	console.log('滚')
+	// },
 	getPersonalized() {
 	this.fly.post(`${this.baseApiUrl}/personalized`).then(res => {
 	        let random = Math.floor(

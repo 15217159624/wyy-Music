@@ -18,7 +18,20 @@
 				"style": {
 					"navigationBarTitleText": "歌曲搜索"
 				}
+			},
+			{
+				"path": "pages/pageSong/index",
+				"style": {
+					"navigationBarTitleText": "歌曲排行"
+				 }
+             },
+			 {
+			    "path": "pages/SongList/index",
+				"style": {
+					"navigationBarTitleText": "歌单"
+				}
 			}
+
     ],
 	"tabBar": {
 	    "color": "#7A7E83",

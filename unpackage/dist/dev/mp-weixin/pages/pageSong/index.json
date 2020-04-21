@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "歌曲排行",
+  "usingComponents": {
+    "song-sheet": "/components/SongSheet"
+  }
+}

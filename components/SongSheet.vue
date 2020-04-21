@@ -23,6 +23,7 @@ export default {
     },
     methods: {
         go() {
+			console.log('进来了')
             uni.navigateTo({
                 url: `/pages/SongList/index?id=${this.Oid}`
             })
