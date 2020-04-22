@@ -1,11 +1,17 @@
-// import request from './request.js'
+import request from './request.js'
 
-// //首页轮播图
-
-// export function getBanner(data) {
-// 	return request({
-// 			url: '/banner',
-// 			method: 'post',
-// 			data
-// 	})  
-// }
+export default {
+	bannerApi: function(data) {
+		return request("POST", "/banner", data);
+	},
+	songUrlApi: function(data) {
+		return request("POST", "/song/url", data);
+	},
+	lyricApi: function(data) {
+		return request("POST", "/lyric", data);
+	},
+	playlistDetailApi: function(data) {
+		return request("POST", "/playlist/detail", data);
+	},
+	
+}

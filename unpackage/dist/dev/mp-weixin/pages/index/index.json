@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "音乐推荐",
-  "usingComponents": {
-    "song-sheet": "/components/SongSheet"
-  }
-}

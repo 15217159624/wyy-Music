@@ -44,13 +44,15 @@
 		        :playCount="item.playCount"
 		    />
 		</View>
+		<MusicFooter></MusicFooter>
 	</view>
 </template>
 
 <script>
 import SongSheet from "../../components/SongSheet";
+import MusicFooter from '../../components/MusicFooter';
 export default {
-   components: { SongSheet },
+   components: { SongSheet , MusicFooter},
 		data() {
 			return {
 				banner: [], //轮播图
@@ -64,7 +66,9 @@ export default {
 			this.getBanner()
 			this.gettoplist()
 			this.getPersonalized()
-		},	
+			this.$store.dispatch('GEI_MUSIC', 308519)
+		},
+		
     methods: {
 	getBanner() {
 	this.banner = []
