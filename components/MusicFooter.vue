@@ -68,7 +68,7 @@
 		box-sizing: border-box;
 		z-index: 9;
 		transition: all 0.3s;
-
+		background-color: #fff;
 		.m-cover {
 			width: 38px;
 			height: 38px;
